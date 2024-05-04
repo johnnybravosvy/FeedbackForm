@@ -1,10 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 
 const Home = () => {
   return (
-    <div>
-      <h1>HELLO WORLD</h1>
-    </div>
+    <>
+      <Navbar />
+      <div>
+        <h1>HELLO WORLD</h1>
+      </div>
+    </>
   );
 };
 

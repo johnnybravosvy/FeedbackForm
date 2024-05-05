@@ -1,3 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 45px;
+  border-bottom: 1px solid red;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+  margin-right: 20px;
+}
+
+.right-navbar {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-link {
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.navbar-link:hover {
+  text-decoration: underline;
+}

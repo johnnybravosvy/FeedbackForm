@@ -9,7 +9,6 @@ function App() {
     <>
       <Home />
       <Navbar />
-      <h1 className="text-5xl font-bold underline">Vite + React</h1>
     </>
   );
 }

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Navbar from "./Navbar";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
@@ -8,6 +9,7 @@ const Login = () => {
     password: "",
     role: "",
   });
+  const navigate = useNavigate();
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -22,10 +24,13 @@ const Login = () => {
   axios.defaults.withCredentials = true;
   function handleSubmit() {
     axios
-      .post("http://localhost:5000/auth/login", { loginData })
-      .then((res) => console.log(res))
+      .post("http://localhost:5000/auth/login", loginData)
+      .then((res) => {
+        if (res.data.login && res.data.role === "admin") {
+          navigate("/dashboard");
+        }
+      })
       .catch((err) => console.log(err));
-    console.log(loginData);
   }
 
   return (

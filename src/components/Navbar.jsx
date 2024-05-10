@@ -14,8 +14,14 @@ const Navbar = () => {
         <Link to="/feedback" className="navbar-link">
           Feedback
         </Link>
-        <Link to="/registration" className="navbar-link">
-          Registration
+        <Link to="/register" className="navbar-link">
+          Register
+        </Link>
+        <Link to="/adduser" className="navbar-link">
+          Add User
+        </Link>
+        <Link to="/dashboard" className="navbar-link">
+          Dashboard
         </Link>
         <Link to="/Login" className="navbar-link">
           Login

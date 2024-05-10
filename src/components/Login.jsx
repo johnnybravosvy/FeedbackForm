@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
+import axios from "axios";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
@@ -18,9 +19,12 @@ const Login = () => {
     });
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    // submitToApi(formData)
+  axios.defaults.withCredentials = true;
+  function handleSubmit() {
+    axios
+      .post("http://localhost:5000/auth/login", { loginData })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
     console.log(loginData);
   }
 

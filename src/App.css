@@ -119,3 +119,82 @@
   font-weight: bold;
   margin-top: 8px;
 }
+
+/* feedback form */
+.feedback-page {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background-color: #fff;
+}
+
+.feedback-container {
+  background-color: #a9a9a9;
+  height: 90%;
+  box-sizing: border-box;
+  border-radius: 8px;
+
+  width: 500px;
+}
+
+.feedback-container h2 {
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  background-color: #405df8;
+}
+
+.feedback-container .form-group {
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.feedback-container .form-group label {
+  display: block;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.feedback-container .form-group input,
+.feedback-container .form-group select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  margin-top: 5px;
+}
+
+.rating {
+  margin-left: 20px;
+}
+
+.feedback-container .btn-submit {
+  background-color: #000080;
+  color: #fff;
+  padding: 20px;
+  width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  margin-right: 0.75rem;
+  border: 1px solid;
+}
+
+textarea {
+  width: 400px;
+  height: 100px;
+  margin-bottom: 5px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  display: block;
+}
+
+/* Register */

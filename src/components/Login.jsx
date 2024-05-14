@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setRoleVar }) => {
   const [loginData, setLoginData] = useState({
     username: "",
     password: "",
@@ -28,6 +28,8 @@ const Login = () => {
       .then((res) => {
         if (res.data.login && res.data.role === "admin") {
           navigate("/dashboard");
+        } else if (res.data.login && res.data.role === "user") {
+          navigate("/");
         }
       })
       .catch((err) => console.log(err));
@@ -52,7 +54,7 @@ const Login = () => {
           <div className="form-group">
             <label htmlFor="password">Password:</label>
             <input
-              type="text"
+              type="password"
               placeholder="enter password"
               onChange={handleChange}
               name="password"
@@ -69,10 +71,10 @@ const Login = () => {
             >
               <option value="">--Choose--</option>
               <option value="admin">Admin</option>
-              <option value="student">Student</option>
+              <option value="user">User</option>
             </select>
           </div>
-          <button className="btn-login" onClick={handleSubmit}>
+          <button className="btn-login" onSubmit={handleSubmit}>
             Login
           </button>
         </div>

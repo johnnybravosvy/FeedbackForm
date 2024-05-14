@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Feedback = () => {
+const AddFeedback = () => {
   const [feedbackData, setFeedbackData] = useState({
     username: "",
     email: "",
@@ -136,4 +136,4 @@ const Feedback = () => {
   );
 };
 
-export default Feedback;
+export default AddFeedback;

@@ -15,20 +15,20 @@ const Register = () => {
 
   function handleChange(event) {
     const { name, value } = event.target;
-    setLoginData((prevLoginData) => {
+    setRegisterData((prevRegisterData) => {
       return {
-        ...prevLoginData,
+        ...prevRegisterData,
         [name]: value,
       };
     });
   }
 
-  axios.defaults.withCredentials = true;
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
     axios
-      .post("http://localhost:5000/auth/login", registerData)
+      .post("http://localhost:5000/user/register", registerData)
       .then((res) => {
-        if (res.data.login && res.data.role === "admin") {
+        if (res.data.registered) {
           navigate("/dashboard");
         }
       })

@@ -2,7 +2,7 @@ import "../App.css";
 import { useEffect } from "react";
 import axios from "axios";
 
-const HomePage = ({ setRole }) => {
+const HomePage = () => {
   axios.defaults.withCredentials = true;
   useEffect(() => {
     axios

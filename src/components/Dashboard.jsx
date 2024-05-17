@@ -30,7 +30,6 @@ const Dashboard = () => {
       </div>
       <div className="dashboard-box">
         <h2>Total Admins</h2> <br />
-        <h2{admin}></h2>
       </div>
     </div>
   );

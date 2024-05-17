@@ -12,14 +12,15 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    children: [{ index: true, element: <HomePage /> }],
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: "/Login", element: <Login /> },
+      { path: "/dashboard", element: <Dashboard /> },
+      { path: "/register", element: <Register /> },
+      { path: "/addfeedback", element: <AddFeedback /> },
+      { path: "/logout", element: <Logout /> },
+    ],
   },
-  { path: "/navbar", element: <Navbar /> },
-  { path: "/Login", element: <Login /> },
-  { path: "/dashboard", element: <Dashboard /> },
-  { path: "/register", element: <Register /> },
-  { path: "/addfeedback", element: <AddFeedback /> },
-  { path: "/logout", element: <Logout setRole={setRole} /> },
 ]);
 
 export default router;

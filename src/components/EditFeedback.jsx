@@ -1,15 +1,15 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const AddFeedback = () => {
+const EditFeedback = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [rating, setRating] = useState("");
   const [comments, setComments] = useState("");
   const navigate = useNavigate();
+  const { id } = useParams();
 
-  axios.defaults.withCredentials = true;
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
@@ -32,8 +32,8 @@ const AddFeedback = () => {
   return (
     <>
       <form action="" className="feedback-page">
-        <div className="feedback-container">
-          <h2>Add Feedback</h2> <br />
+        <div className="feedback-form">
+          <h2> Edit Feedback</h2> <br />
           <div className="form-group">
             <label htmlFor="username">Username:</label>
             <input
@@ -120,7 +120,7 @@ const AddFeedback = () => {
             />
           </div>
           <button className="btn-submit" onClick={handleSubmit}>
-            Add
+            save
           </button>
         </div>
       </form>
@@ -128,4 +128,4 @@ const AddFeedback = () => {
   );
 };
 
-export default AddFeedback;
+export default EditFeedback;

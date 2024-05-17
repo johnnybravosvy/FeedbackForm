@@ -38,7 +38,7 @@ const Register = () => {
   return (
     <>
       <Navbar />
-      <form action="" className="register-page">
+      <form className="register-page" onSubmit={handleSubmit}>
         <div className="register-container">
           <h2>Register</h2> <br />
           <div className="form-group">
@@ -74,7 +74,7 @@ const Register = () => {
           <div className="form-group">
             <label htmlFor="email">Email:</label>
             <input
-              type="text"
+              type="email"
               placeholder="enter email"
               onChange={handleChange}
               name="email"
@@ -84,14 +84,14 @@ const Register = () => {
           <div className="form-group">
             <label htmlFor="password">Password:</label>
             <input
-              type="text"
+              type="password"
               placeholder="enter password"
               onChange={handleChange}
               name="password"
               value={registerData.password}
             />
           </div>
-          <button className="btn-register" onClick={handleSubmit}>
+          <button className="btn-register" type="submit">
             Register
           </button>
         </div>

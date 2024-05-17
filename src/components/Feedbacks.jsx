@@ -1,5 +1,6 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import { useEffect, useState } from "react";
+import FeedbackCard from "./FeedbackCard";
 
 const Feedbacks = () => {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -7,7 +8,7 @@ const Feedbacks = () => {
     axios
       .get("http://localhost:5000/feedback/feedbacks")
       .then((res) => {
-        setFeedbacks(res.data);
+        setFeedbacks(res.data.feedback);
       })
       .catch((err) => console.log(err));
   }, []);

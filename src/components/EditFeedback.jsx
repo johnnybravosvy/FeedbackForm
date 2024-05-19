@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -10,17 +10,29 @@ const EditFeedback = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000?feedback/feedback/" + id)
+      .then((res) => {
+        setUsername(res.data.username);
+        setEmail(res.data.email);
+        setRating(res.data.rating);
+        setComments(res.data.comments);
+      })
+      .catch((err) => console.log(err));
+  });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/feedback/add", {
+      .put("http://localhost:5000/feedback/feedback/" + id, {
         username,
         email,
         rating,
         comments,
       })
       .then((res) => {
-        if (res.data.added) {
+        if (res.data.updated) {
           navigate("/feedbacks");
         } else {
           console.log(res);
@@ -31,7 +43,7 @@ const EditFeedback = () => {
 
   return (
     <>
-      <form action="" className="feedback-page">
+      <form action="" className="feedback-page" onSubmit={handleSubmit}>
         <div className="feedback-form">
           <h2> Edit Feedback</h2> <br />
           <div className="form-group">
@@ -41,6 +53,7 @@ const EditFeedback = () => {
               placeholder="username"
               onChange={(e) => setUsername(e.target.value)}
               name="username"
+              value={username}
             />
           </div>
           <div className="form-group">
@@ -50,6 +63,7 @@ const EditFeedback = () => {
               placeholder="email"
               onChange={(e) => setEmail(e.target.value)}
               name="email"
+              value={email}
             />
           </div>
           <fieldset className="rating">
@@ -120,7 +134,7 @@ const EditFeedback = () => {
             />
           </div>
           <button className="btn-submit" onClick={handleSubmit}>
-            save
+            Update
           </button>
         </div>
       </form>

@@ -7,7 +7,7 @@ const FeedbackCard = ({ feedback }) => {
     <div className="feedback-card">
       <div className="feedback-details">
         <h2>{username}</h2>
-        <h3>{email}</h3>
+        <p>{email}</p>
         <p>{ratings}</p>
         <p>{comments}</p>
       </div>
@@ -18,7 +18,7 @@ const FeedbackCard = ({ feedback }) => {
           </Link>
         </button>
         <button>
-          <Link to={`/feedback/${feedback._id}`} classame="btn-link">
+          <Link to={`/delete/${feedback._id}`} classame="btn-link">
             delete
           </Link>
         </button>

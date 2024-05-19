@@ -22,6 +22,7 @@ const router = createBrowserRouter([
       { path: "/addfeedback", element: <AddFeedback /> },
       { path: "/logout", element: <Logout /> },
       { path: "/feedback/:id", element: <EditFeedback /> },
+      { path: "/delete/:id", element: <EditFeedback /> },
     ],
   },
 ]);

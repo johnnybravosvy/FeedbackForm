@@ -1,15 +1,44 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./App.css";
-import Home from "./components/Home";
 import Login from "./components/Login";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import HomePage from "./pages/HomePage";
+import Feedbacks from "./components/Feedbacks";
+import Dashboard from "./components/Dashboard";
+import Register from "./components/Register";
+import Logout from "./components/Logout";
+import axios from "axios";
 
 function App() {
+  const [role, setRole] = useState("");
+
+  axios.defaults.withCredentials = true;
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/auth/verify")
+      .then((res) => {
+        if (res.data.login) {
+          setRole(res.data.role);
+        } else {
+          setRole("");
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
   return (
-    <>
-      <Home />
-      <Login />
-    </>
+    <BrowserRouter>
+      <Navbar role={role} />
+      <Routes>
+        <Route path="/" element={<HomePage />}></Route>
+        <Route path="/feedbacks" element={<Feedbacks />}></Route>
+        <Route path="/login" element={<Login setRoleVar={setRole} />}></Route>
+        <Route path="/dashboard" element={<Dashboard />}></Route>
+        <Route path="/register" element={<Register />}></Route>
+        <Route path="/logout" element={<Logout setRole={setRole} />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -1,37 +1,24 @@
 import { useState } from "react";
-import Navbar from "./Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Login = ({ setRoleVar }) => {
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
-  const [role, setRole] = useState();
-  const [loginData, setLoginData] = useState({
-    username: "",
-    password: "",
-    role: "",
-  });
-  const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState("user");
 
-  function handleChange(event) {
-    const { name, value } = event.target;
-    setLoginData((prevLoginData) => {
-      return {
-        ...prevLoginData,
-        [name]: value,
-      };
-    });
-  }
+  const navigate = useNavigate();
 
   axios.defaults.withCredentials = true;
   function handleSubmit() {
     axios
-      .post("http://localhost:5000/auth/login", loginData)
+      .post("http://localhost:5000/auth/login", { username, password, role })
       .then((res) => {
         if (res.data.login && res.data.role === "admin") {
+          setRoleVar("admin");
           navigate("/dashboard");
         } else if (res.data.login && res.data.role === "user") {
+          setRoleVar("user");
           navigate("/");
         }
       })
@@ -40,7 +27,7 @@ const Login = ({ setRoleVar }) => {
 
   return (
     <>
-      <form action="" className="login-page">
+      <form action="" className="login-page" onSubmit={handleSubmit}>
         <div className="login-container">
           <h2>Login</h2> <br />
           <div className="form-group">
@@ -48,9 +35,9 @@ const Login = ({ setRoleVar }) => {
             <input
               type="text"
               placeholder="Enter Username"
-              onChange={handleChange}
+              onChange={(e) => setUsername(e.target.value)}
               name="username"
-              value={loginData.username}
+              value={username}
             />
           </div>
           <div className="form-group">
@@ -58,9 +45,9 @@ const Login = ({ setRoleVar }) => {
             <input
               type="password"
               placeholder="enter password"
-              onChange={handleChange}
+              onChange={(e) => setPassword(e.target.value)}
               name="password"
-              value={loginData.password}
+              value={password}
             />
           </div>
           <div className="form-group">
@@ -68,15 +55,15 @@ const Login = ({ setRoleVar }) => {
             <select
               name="role"
               id="role"
-              onChange={handleChange}
-              value={loginData.role}
+              onChange={(e) => setRole(e.target.value)}
+              value={role}
             >
               <option value="">--Choose--</option>
               <option value="admin">Admin</option>
               <option value="user">User</option>
             </select>
           </div>
-          <button className="btn-login" onSubmit={handleSubmit}>
+          <button className="btn-login" type="submit">
             Login
           </button>
         </div>

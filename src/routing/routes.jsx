@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "/feedbacks", element: <Feedbacks /> },
-      { path: "/Login", element: <Login /> },
+      { path: "/login", element: <Login setRoleVar={setRole} /> },
       { path: "/dashboard", element: <Dashboard /> },
       { path: "/register", element: <Register /> },
       { path: "/addfeedback", element: <AddFeedback /> },

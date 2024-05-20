@@ -1,21 +1,6 @@
 import "../App.css";
-import { useEffect } from "react";
-import axios from "axios";
 
 const HomePage = () => {
-  axios.defaults.withCredentials = true;
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/auth/verify")
-      .then((res) => {
-        if (res.data.login) {
-          setRole(res.data.role);
-        } else {
-          setRole("");
-        }
-      })
-      .catch((err) => console.log(err));
-  }, []);
   return (
     <>
       <div className="home-container">

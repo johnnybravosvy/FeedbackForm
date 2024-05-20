@@ -13,7 +13,7 @@ const Dashboard = () => {
         if (res.data.ok) {
           setUsers(res.data.users);
           setAdmin(res.data.admin);
-          setFeedbacks(res.data.book);
+          setFeedbacks(res.data.feedback);
         }
       })
       .catch((err) => console.log(err));

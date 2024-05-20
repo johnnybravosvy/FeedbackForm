@@ -8,6 +8,7 @@ import HomePage from "../pages/HomePage";
 import Logout from "../components/Logout";
 import Feedbacks from "../components/Feedbacks";
 import EditFeedback from "../components/EditFeedback";
+import DeleteFeedback from "../components/DeleteFeedback";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
       { path: "/addfeedback", element: <AddFeedback /> },
       { path: "/logout", element: <Logout /> },
       { path: "/feedback/:id", element: <EditFeedback /> },
-      { path: "/delete/:id", element: <EditFeedback /> },
+      { path: "/delete/:id", element: <DeleteFeedback /> },
     ],
   },
 ]);

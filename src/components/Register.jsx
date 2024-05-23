@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Navbar from "./Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +14,7 @@ const Register = () => {
   function handleSubmit(e) {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/user/register", {
+      .post("http://localhost:5173/feedback/register", {
         firstname,
         lastname,
         username,
@@ -32,7 +31,6 @@ const Register = () => {
 
   return (
     <>
-      <Navbar />
       <form className="register-page" onSubmit={handleSubmit}>
         <div className="register-container">
           <h2>Register</h2> <br />

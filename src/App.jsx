@@ -10,6 +10,9 @@ import Dashboard from "./components/Dashboard";
 import Register from "./components/Register";
 import Logout from "./components/Logout";
 import axios from "axios";
+import EditFeedback from "./components/EditFeedback";
+import DeleteFeedback from "./components/DeleteFeedback";
+import AddFeedback from "./components/AddFeedback";
 
 function App() {
   const [role, setRole] = useState("");
@@ -36,7 +39,11 @@ function App() {
         <Route path="/login" element={<Login setRoleVar={setRole} />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/register" element={<Register />}></Route>
+        <Route path="/addfeedback" element={<AddFeedback />}></Route>
         <Route path="/logout" element={<Logout setRole={setRole} />}></Route>
+        <Route path="/register" element={<Register />}></Route>
+        <Route path="/feedback/:id" element={<EditFeedback />}></Route>
+        <Route path="/delete/:id" element={<DeleteFeedback />}></Route>
       </Routes>
     </BrowserRouter>
   );
